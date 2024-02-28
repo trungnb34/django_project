@@ -9,7 +9,7 @@ pipeline {
 
     stage('build docker') {
       steps {
-        sh 'docker-compose up --build '
+        sh 'python -m pip install -r requirements.txt'
       }
     }
 
