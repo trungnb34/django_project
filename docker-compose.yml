@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  web:
+    # name: server
+    build: ./Server
+    command: python Server/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+    env_file:
+      - ./Server/.env.dev
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_DB=todolist
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
