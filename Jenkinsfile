@@ -21,7 +21,7 @@ pipeline {
             emailext (
                 to: 'zimmi123cook@gmail.com',
                 subject: 'Build Success Notification',
-                body: 'The build has succeeded at ${new Date(currentBuild.startTimeInMillis)}'
+                body: 'The build has succeeded at ' + new Date().toString()
             )
         }
         failure {
