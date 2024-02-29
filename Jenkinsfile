@@ -21,7 +21,7 @@ pipeline {
             emailext (
                 to: 'zimmi123cook@gmail.com',
                 subject: 'Build Success Notification',
-                body: 'The build has succeeded at ' + new Date().toString()
+                body: "The build id (ID: ${env.BUILD_ID}) has succeeded at " + new Date().toString()
             )
         }
         failure {
@@ -29,7 +29,7 @@ pipeline {
             emailext (
                 to: 'zimmi123cook@gmail.com',
                 subject: 'Build Failure Notification',
-                body: 'The build has failed at ${new Date(currentBuild.startTimeInMillis)}. Please check the Jenkins logs for details.'
+                body: 'The build has failed at ' + new Date().toString() +  '. Please check the Jenkins logs for details.'
             )
         }
     }
