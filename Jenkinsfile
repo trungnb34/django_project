@@ -9,5 +9,10 @@ pipeline {
         '''
       }
     }
+    stage('Run unitest') {
+      steps {
+        sh 'docker-compose run web bash -c "cd Server && python3 manage.py test"'
+      }
+    }
   }
 }
